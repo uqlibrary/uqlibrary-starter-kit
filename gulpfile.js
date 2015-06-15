@@ -23,6 +23,7 @@ var fs = require('fs');
 var glob = require('glob');
 var awspublish = require('gulp-awspublish');
 var gutil = require('gulp-util');
+var rename = require('gulp-rename');
 
 var AUTOPREFIXER_BROWSERS = [
   'ie >= 10',
@@ -242,7 +243,7 @@ gulp.task('default', ['clean'], function (cb) {
 });
 
 var publishSources = [
-  //'./dist/*.*',
+  //'./dist/**',
   //'./dist/scripts/**',
   //'./dist/styles/**',
   //'./dist/images/**',
@@ -250,19 +251,33 @@ var publishSources = [
   //'./dist/bower-components/webcomponentsjs/**'
 ];
 
+gulp.task('move2publish', function() {
+
+  var awsConfig = JSON.parse(fs.readFileSync('./aws.json'));
+
+  gutil.log("Moving files to: " + awsConfig.params.bucketSubDir + '/master/uqlibrary-starter-kit');
+
+  return gulp.src(publishSources)
+    .pipe(gulp.dest(awsConfig.params.bucketSubDir + '/master/uqlibrary-starter-kit'));
+});
+
 gulp.task('publish', function() {
 
   // create a new publisher using S3 options
   // http://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/S3.html#constructor-property
   //http://marcocarag.com/2014/06/18/migrating-away-from-github-pages-and-changing-task-runners-just-cause/
-  var publisher = awspublish.create(JSON.parse(fs.readFileSync('./aws.json')));
+  var awsConfig = JSON.parse(fs.readFileSync('./aws.json'));
+  var publisher = awspublish.create(awsConfig);
 
   // define custom headers
   var headers = {
     'Cache-Control': 'max-age=315360000, no-transform, public'
   };
 
-  return gulp.src(publishSources)
+
+  gutil.log("Uploading files from: ./" + awsConfig.params.bucketSubDir + '/master/uqlibrary-starter-kit');
+
+  return gulp.src('./' + awsConfig.params.bucketSubDir + '/master/uqlibrary-starter-kit')
     // gzip, Set Content-Encoding headers and add .gz extension
     .pipe(awspublish.gzip({ ext: '.gz' }))
 

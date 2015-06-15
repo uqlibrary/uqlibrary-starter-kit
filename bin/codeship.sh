@@ -51,7 +51,7 @@ sed -i -e "s#<CFDistribution>#${CFDistribution}#g" ${awsconfig}
 sed -i -e "s#<AWSRegion>#${AWSRegion}#g" ${awsconfig}
 
 gulp default
-
+gulp move2publish
 gulp publish
 
 set -x
