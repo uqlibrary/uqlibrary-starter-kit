@@ -274,13 +274,14 @@ gulp.task('publish', function() {
     'Cache-Control': 'max-age=315360000, no-transform, public'
   };
 
-  var src = './dist/elements/**';
+  var src = './dist/**';
 
   gutil.log("Uploading files from: " + src);
+  gutil.log("Uploading files from: " + (awsConfig.params.bucketSubDir + '/uqlibrary-starter-kit/'));
 
   return gulp.src(src)
     .pipe(rename(function (path) {
-      path.dirname += (awsConfig.params.bucketSubDir + '/uqlibrary-starter-kit');
+      path.dirname = (awsConfig.params.bucketSubDir + '/uqlibrary-starter-kit/') + path.dirname;
     }))
     // gzip, Set Content-Encoding headers and add .gz extension
     .pipe(awspublish.gzip({ ext: '.gz' }))
