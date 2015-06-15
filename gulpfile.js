@@ -258,7 +258,7 @@ gulp.task('move2publish', function() {
   gutil.log("Moving files to: " + awsConfig.params.bucketSubDir + '/uqlibrary-starter-kit');
 
   return gulp.src(publishSources)
-    .pipe(gulp.dest(awsConfig.params.bucketSubDir + '/uqlibrary-starter-kit'));
+    .pipe(gulp.dest('./' + awsConfig.params.bucketSubDir + '/uqlibrary-starter-kit'));
 });
 
 gulp.task('publish', function() {
