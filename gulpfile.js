@@ -243,12 +243,12 @@ gulp.task('default', ['clean'], function (cb) {
 });
 
 var publishSources = [
-  './dist/*.*',
-  './dist/scripts/**',
-  './dist/styles/**',
-  './dist/images/**',
-  './dist/elements/**',
-  './dist/bower-components/webcomponentsjs/**'
+  './dist/**'
+  //'./dist/scripts/**',
+  //'./dist/styles/**',
+  //'./dist/images/**',
+  //'./dist/elements/**',
+  //'./dist/bower-components/webcomponentsjs/**'
 ];
 
 gulp.task('move2publish', function() {
