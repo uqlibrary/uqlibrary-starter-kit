@@ -255,10 +255,10 @@ gulp.task('move2publish', function() {
 
   var awsConfig = JSON.parse(fs.readFileSync('./aws.json'));
 
-  gutil.log("Moving files to: " + awsConfig.params.bucketSubDir + '/master/uqlibrary-starter-kit');
+  gutil.log("Moving files to: " + awsConfig.params.bucketSubDir + '/uqlibrary-starter-kit');
 
   return gulp.src(publishSources)
-    .pipe(gulp.dest(awsConfig.params.bucketSubDir + '/master/uqlibrary-starter-kit'));
+    .pipe(gulp.dest(awsConfig.params.bucketSubDir + '/uqlibrary-starter-kit'));
 });
 
 gulp.task('publish', function() {
@@ -274,10 +274,10 @@ gulp.task('publish', function() {
     'Cache-Control': 'max-age=315360000, no-transform, public'
   };
 
+var src = './' + awsConfig.params.bucketSubDir + '/master/uqlibrary-starter-kit'
+  gutil.log("Uploading files from: ./" + awsConfig.params.bucketSubDir + '/uqlibrary-starter-kit');
 
-  gutil.log("Uploading files from: ./" + awsConfig.params.bucketSubDir + '/master/uqlibrary-starter-kit');
-
-  return gulp.src('./' + awsConfig.params.bucketSubDir + '/master/uqlibrary-starter-kit')
+  return gulp.src('./' + awsConfig.params.bucketSubDir + '/uqlibrary-starter-kit')
     // gzip, Set Content-Encoding headers and add .gz extension
     .pipe(awspublish.gzip({ ext: '.gz' }))
 
