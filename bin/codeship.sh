@@ -54,12 +54,6 @@ set -x
 
 gulp default
 
-gulp move2publish
-
-ls -la v1/master/uqlibrary-starter-kit/
-
 gulp publish
-
-ls -la v1/master/uqlibrary-starter-kit/
 
 rm -f ${awsconfig}
