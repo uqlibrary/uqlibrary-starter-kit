@@ -50,10 +50,16 @@ sed -i -e "s#<S3BucketSubDir>#${S3BucketSubDirVersion}${S3BucketSubDir}#g" ${aws
 sed -i -e "s#<CFDistribution>#${CFDistribution}#g" ${awsconfig}
 sed -i -e "s#<AWSRegion>#${AWSRegion}#g" ${awsconfig}
 
+set -x
+
 gulp default
+
 gulp move2publish
+
+ls -la v1/master/uqlibrary-starter-kit/
+
 gulp publish
 
-set -x
+ls -la v1/master/uqlibrary-starter-kit/
 
 rm -f ${awsconfig}

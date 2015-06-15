@@ -274,10 +274,10 @@ gulp.task('publish', function() {
     'Cache-Control': 'max-age=315360000, no-transform, public'
   };
 
-var src = './' + awsConfig.params.bucketSubDir + '/master/uqlibrary-starter-kit'
-  gutil.log("Uploading files from: ./" + awsConfig.params.bucketSubDir + '/uqlibrary-starter-kit');
+  var src = './' + awsConfig.params.bucketSubDir + '/master/uqlibrary-starter-kit/*';
+  gutil.log("Uploading files from: " + src);
 
-  return gulp.src('./' + awsConfig.params.bucketSubDir + '/uqlibrary-starter-kit')
+  return gulp.src(src)
     // gzip, Set Content-Encoding headers and add .gz extension
     .pipe(awspublish.gzip({ ext: '.gz' }))
 
