@@ -247,7 +247,7 @@ var publishSources = [
   './dist/scripts/**',
   './dist/styles/**',
   './dist/images/**',
-  './dist/elements/**'
+  './dist/elements/**',
   './dist/bower-components/webcomponentsjs/**'
 ];
 
