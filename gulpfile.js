@@ -243,12 +243,12 @@ gulp.task('default', ['clean'], function (cb) {
 });
 
 var publishSources = [
-  //'./dist/**',
-  //'./dist/scripts/**',
-  //'./dist/styles/**',
-  //'./dist/images/**',
-  './dist/elements/elements.vulcanized.html'
-  //'./dist/bower-components/webcomponentsjs/**'
+  './dist/*.*',
+  './dist/scripts/**',
+  './dist/styles/**',
+  './dist/images/**',
+  './dist/elements/**'
+  './dist/bower-components/webcomponentsjs/**'
 ];
 
 gulp.task('move2publish', function() {
@@ -274,17 +274,13 @@ gulp.task('publish', function() {
     'Cache-Control': 'max-age=315360000, no-transform, public'
   };
 
-  var src = './dist/**';
-
-  gutil.log("Uploading files from: " + src);
-  gutil.log("Uploading files from: " + (awsConfig.params.bucketSubDir + '/uqlibrary-starter-kit/'));
-
-  return gulp.src(src)
+  return gulp.src(publishSources)
     .pipe(rename(function (path) {
-      path.dirname = (awsConfig.params.bucketSubDir + '/uqlibrary-starter-kit/') + path.dirname;
+      path.dirname = awsConfig.params.bucketSubDir + '/' + path.dirname;
     }))
     // gzip, Set Content-Encoding headers and add .gz extension
-    .pipe(awspublish.gzip({ ext: '.gz' }))
+    //.pipe(awspublish.gzip({ ext: '.gz' }))
+    .pipe(awspublish.gzip())
 
     // publisher will add Content-Length, Content-Type and headers specified above
     // If not specified it will set x-amz-acl to public-read by default
