@@ -3,7 +3,7 @@
   "secretAccessKey": "<AWSSecretKey>",
   "params" : {
     "region": "<AWSRegion>",
-    "Bucket": "<S3Bucket>",
+    "Bucket": "<S3Bucket>/<S3BucketSubDir>",
     "bucketSubDir": "<S3BucketSubDir>",
     "distribution": "<CFDistribution>"
   }
