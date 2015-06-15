@@ -274,7 +274,7 @@ gulp.task('publish', function() {
     'Cache-Control': 'max-age=315360000, no-transform, public'
   };
 
-  var src = './' + awsConfig.params.bucketSubDir + '/master/uqlibrary-starter-kit/*';
+  var src = './' + awsConfig.params.bucketSubDir + '/uqlibrary-starter-kit/*';
   gutil.log("Uploading files from: " + src);
 
   return gulp.src(src)
