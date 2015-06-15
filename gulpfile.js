@@ -22,6 +22,7 @@ var path = require('path');
 var fs = require('fs');
 var glob = require('glob');
 var awspublish = require('gulp-awspublish');
+var gutil = require('gulp-util');
 
 var AUTOPREFIXER_BROWSERS = [
   'ie >= 10',
@@ -240,6 +241,15 @@ gulp.task('default', ['clean'], function (cb) {
     cb);
 });
 
+var publishSources = [
+  //'./dist/*.*',
+  //'./dist/scripts/**',
+  //'./dist/styles/**',
+  //'./dist/images/**',
+  './dist/elements/elements.vulcanized.html'
+  //'./dist/bower-components/webcomponentsjs/**'
+];
+
 gulp.task('publish', function() {
 
   // create a new publisher using S3 options
@@ -252,7 +262,7 @@ gulp.task('publish', function() {
     'Cache-Control': 'max-age=315360000, no-transform, public'
   };
 
-  return gulp.src('./dist/*')
+  return gulp.src(publishSources)
     // gzip, Set Content-Encoding headers and add .gz extension
     .pipe(awspublish.gzip({ ext: '.gz' }))
 
