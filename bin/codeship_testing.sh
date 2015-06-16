@@ -1,10 +1,11 @@
 #!/bin/bash
 
 # start debugging/tracing commands, -e - exit if command returns error (non-zero status)
-set -xe
+#set -xe
 
-echo "${CI_BRANCH}"
+echo "Testing on branch: "${CI_BRANCH}
 
+branch=${CI_BRANCH}
 src=$(git rev-parse --show-toplevel)
 base=$(basename ${src})
 dest="${base/uqlibrary-/}"

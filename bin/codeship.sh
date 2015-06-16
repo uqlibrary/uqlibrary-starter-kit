@@ -1,10 +1,11 @@
 #!/bin/bash
 
 # start debugging/tracing commands, -e - exit if command returns error (non-zero status)
-set -xe
+#set -xe
 
-echo "${CI_BRANCH}"
+echo "Deploying branch: ${CI_BRANCH}"
 
+branch=${CI_BRANCH}
 src=$(git rev-parse --show-toplevel)
 base=$(basename ${src})
 dest="${base/uqlibrary-/}"
@@ -14,7 +15,7 @@ cd ../${base}
 pwd
 
 # stop debugging
-set +x
+#set +x
 
 # Use env vars to set AWS config
 awsconfig="aws.json"
@@ -33,13 +34,13 @@ sed -i -e "s#<S3BucketSubDir>#${S3BucketSubDirVersion}${S3BucketSubDir}#g" ${aws
 sed -i -e "s#<CFDistribution>#${CFDistribution}#g" ${awsconfig}
 sed -i -e "s#<AWSRegion>#${AWSRegion}#g" ${awsconfig}
 
-set -x
+#set -x
 
 #TODO
 # if branch == prod or staging do extra minifications, etc
 # don't do min for master for better testing/debugging
 #run file revision, css min tasks - find gulp alternative for min/rev
-#if [ ${CI_BRANCH} = "staging" ] || [ ${CI_BRANCH} = "production" ]; then
+#if [ $branch = "staging" ] || [ $branch = "production" ]; then
 #  gulp predeploy
 #fi
 
