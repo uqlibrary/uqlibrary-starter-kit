@@ -44,15 +44,10 @@ set -x
 #fi
 
 gulp default
-
-ls -la dist
-ls -la dist/bower_components
-
-gulp clean:bower
-
-ls -la dist
-ls -la dist/bower_components
-
 gulp publish
 
 rm -f ${awsconfig}
+
+ls -la dist
+ls -la dist/bower_components/webcomponentsjs
+

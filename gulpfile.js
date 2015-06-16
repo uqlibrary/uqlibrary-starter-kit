@@ -247,11 +247,11 @@ gulp.task('clean:bower', function(cb) {
     //clean up all polymer components, since all components were vulcanized
     'dist/bower_components/**/*',
     //leave only webcomponentsjs
-    '!dist/bower_components/webcomponentsjs'
+    '!dist/bower_components/webcomponentsjs/**'
   ], cb);
 });
 
-gulp.task('publish', function() {
+gulp.task('publish', ['clean:bower'], function() {
 
   // create a new publisher using S3 options
   var awsConfig = JSON.parse(fs.readFileSync('./aws.json'));
