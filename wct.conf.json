@@ -1,3 +1,18 @@
 {
-  "suites": ["test"]
+  "suites": [
+    <TestSuites>
+  ],
+  "plugins": {
+    "local": {
+      "browsers": [
+        "chrome",
+        "firefox"
+      ]
+    },
+    "sauce": {
+      "browsers": [
+        <SauceBrowsers>
+      ]
+    }
+  }
 }
