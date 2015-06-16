@@ -20,12 +20,14 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
   // have resolved and content has been stamped to the page
   appTemplate.addEventListener('dom-change', function() {
     console.log('Our app is ready to rock!');
+    console.log(appTemplate);
   });
 
   // See https://github.com/Polymer/polymer/issues/1381
   window.addEventListener('WebComponentsReady', function() {
     // imports are loaded and elements have been registered
     console.log('web components ready');
+    console.log(app);
   });
 
 })(document);
