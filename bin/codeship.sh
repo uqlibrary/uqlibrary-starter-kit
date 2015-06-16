@@ -18,7 +18,10 @@ pwd
 #set +x
 
 # Use env vars to set AWS config
+awsconfigtemp="template.aws.json"
 awsconfig="aws.json"
+
+cp $awsconfigtemp $awsconfig
 
 # use codeship branch environment variable to push to branch name dir unless it's 'production' branch (or master for now)
 if [ ${CI_BRANCH} != "production" ]; then
@@ -44,7 +47,7 @@ sed -i -e "s#<AWSRegion>#${AWSRegion}#g" ${awsconfig}
 #  gulp predeploy
 #fi
 
-gulp default
-gulp publish
-
-rm -f ${awsconfig}
+#gulp default
+#gulp publish
+#
+#rm -f ${awsconfig}

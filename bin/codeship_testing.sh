@@ -62,6 +62,9 @@ esac
 
 # Update test configuration
 wctconfig="wct.conf.json"
+wctconfigtemp="template.wct.conf.json"
+
+cp $wctconfigtemp $wctconfig
 
 # Add test suites
 sed -i -e "s#<TestSuites>#${testSuites}#g" $wctconfig
@@ -71,6 +74,8 @@ sed -i -e "s#<SauceBrowsers>#${remoteBrowsers}#g" $wctconfig
 
 # Run tests on dist version (min and vulcanized)
 gulp
+
+# TODO: break down into deployment pipelines, execute local tests in one pipeline, remote in another
 gulp test:local
 gulp test:remote
 

@@ -7,3 +7,5 @@ bower_components
 *.map
 npm-debug.log
 test/bower_components/
+*.json-e
+aws.json

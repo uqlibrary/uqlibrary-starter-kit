@@ -1,6 +1,6 @@
 {
   "suites": [
-    "test"
+    <TestSuites>
   ],
   "plugins": {
     "local": {
@@ -11,8 +11,7 @@
     },
     "sauce": {
       "browsers": [
-        "OSX 10.10/safari@8.0",
-        "Windows 8.1/internet explorer@11.0"
+        <SauceBrowsers>
       ]
     }
   }
