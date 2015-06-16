@@ -251,7 +251,7 @@ gulp.task('clean:bower', function(cb) {
   ], cb);
 });
 
-gulp.task('publish', ['clean:bower'], function() {
+gulp.task('publish', function() {
 
   // create a new publisher using S3 options
   var awsConfig = JSON.parse(fs.readFileSync('./aws.json'));
