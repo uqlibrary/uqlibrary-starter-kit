@@ -60,7 +60,6 @@ case "$branch" in
   ;;
 esac
 
-
 # Update test configuration
 wctconfig="wct.conf.json"
 
@@ -69,6 +68,9 @@ sed -i -e "s#<TestSuites>#${testSuites}#g" $wctconfig
 # Add remote browsers
 sed -i -e "s#<SauceBrowsers>#${remoteBrowsers}#g" $wctconfig
 
+
+# Run tests on dist version (min and vulcanized)
+gulp
 gulp test:local
 gulp test:remote
 
