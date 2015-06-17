@@ -14,7 +14,9 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
       <iron-pages selected="[[route]]" attr-for-selected="sub-application">
 
-        <div sub-application="home"><h2>Home App....</h2></div>
+        <div sub-application="home">
+          <uqlibrary-hours-element id="hoursElement"></uqlibrary-hours-element>
+        </div>
         <div sub-application="hours"><h2>Hours App....</h2></div>
 
         <div sub-application="booking">
@@ -67,6 +69,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         this.$.dateSelector.maxSelectionLength = 3;
 
         this.$.dateSelector.timeslots = this.generateTimeslots(this.$.dateSelector.selectedDate);
+
       },
 
       routeChanged: function(newValue, oldValue) {
