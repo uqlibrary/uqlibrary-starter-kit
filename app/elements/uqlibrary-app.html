@@ -10,7 +10,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
 <dom-module id="uqlibrary-app">
   <template>
-    <uqlibrary-scaffold app-title="UQ Library">
+    <uqlibrary-scaffold id="uqlScaffold" app-title="UQ Library" enable-search-suggestions="true">
       <h1>Select date and time</h1>
 
       <iron-pages selected="[[route]]" attr-for-selected="sub-application">
@@ -47,6 +47,8 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
   </template>
 </dom-module>
 <script>
+
+
   (function () {
     Polymer({
       is: 'uqlibrary-app',
@@ -59,6 +61,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       },
 
       ready: function() {
+        var that = this;
         var today = new Date();
         today = new Date(today.getFullYear(), today.getMonth(), today.getDate());
 
@@ -68,6 +71,16 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         this.$.dateSelector.maxSelectionLength = 3;
 
         this.$.dateSelector.timeslots = this.generateTimeslots(this.$.dateSelector.selectedDate);
+
+        document.addEventListener('uqlibrary-search-input-search-value-changed', function(e) {
+          that.$.uqlScaffold.fire('uqlibrary-search-input-search-suggestions-loaded', {data: [ { text: 'suggestion 1 for '+ e.detail.value, url: '#' }, { text: 'suggestion 2' }, { text: 'suggestion 3', url: 'http://google.com' }] })
+          console.log('event listener');
+        });
+
+        document.addEventListener('uqlibrary-search-input-search-submitted', function(e) {
+          console.log('search-submitted ' + e.detail.searchTerm);
+        });
+
       },
 
       routeChanged: function(newValue, oldValue) {
