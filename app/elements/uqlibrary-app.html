@@ -75,7 +75,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         this.$.dateSelector.timeslots = this.generateTimeslots(this.$.dateSelector.selectedDate);
 
         document.addEventListener('uqlibrary-search-input-search-value-changed', function(e) {
-          that.$.uqlScaffold.fire('uqlibrary-search-input-search-suggestions-loaded', {data: [ { text: 'suggestion 1 for '+ e.detail.value, url: '#' }, { text: 'suggestion 2' }, { text: 'suggestion 3', url: 'http://google.com' }] })
+          that.$.uqlScaffold.fire('uqlibrary-search-input-search-suggestions-loaded', {data: [ { text: 'suggestion 1 for '+ e.detail.value, url: '#' }, { text: 'suggestion 2' }, { text: 'suggestion 3', url: 'http://google.com' }] });
           console.log('event listener');
         });
 
