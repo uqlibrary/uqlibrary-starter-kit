@@ -76,6 +76,6 @@ sed -i -e "s#<SauceBrowsers>#${remoteBrowsers}#g" $wctconfig
 gulp
 
 # TODO: break down into deployment pipelines, execute local tests in one pipeline, remote in another
-gulp test:local
-gulp test:remote
+#gulp test:local
+#gulp test:remote
 

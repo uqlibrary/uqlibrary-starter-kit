@@ -10,13 +10,40 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
 <dom-module id="uqlibrary-app">
   <template>
+<<<<<<< HEAD
     <uqlibrary-scaffold app-title="UQ Library">
       <h1>Select date and time</h1>
 
-      <p>
-        <uqlibrary-date-selector id="dateSelector"></uqlibrary-date-selector>
-      </p>
+      <iron-pages selected="[[route]]" attr-for-selected="sub-application">
 
+        <div sub-application="home"><h2>Home App....</h2></div>
+        <div sub-application="hours"><h2>Hours App....</h2></div>
+
+        <div sub-application="booking">
+          <h2>Booking App....</h2>
+          <pre>
+            TODO: insert something like 'uqlibrary-booking-app'
+          </pre>
+          <p>
+            <uqlibrary-date-selector id="dateSelector"></uqlibrary-date-selector>
+          </p>
+        </div>
+
+        <div sub-application="borrowing">
+          <h2>Borrowing App....</h2>
+          <pre>
+            TODO: insert something like 'uqlibrary-borrowing-app'
+          </pre>
+        </div>
+        <div sub-application="computers"><h2>Computers App....</h2></div>
+        <div sub-application="courses"><h2>Courses App....</h2></div>
+        <div sub-application="research"><h2>Research App....</h2></div>
+        <div sub-application="printing"><h2>Printing App....</h2></div>
+        <div sub-application="masquerade"><h2>Masquerade App....</h2></div>
+        <div sub-application="feedback"><h2>Feedback App....</h2></div>
+        <div sub-application="askus"><h2>Ask Us App....</h2></div>
+
+      </iron-pages>
     </uqlibrary-scaffold>
   </template>
 </dom-module>
@@ -26,7 +53,10 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       is: 'uqlibrary-app',
 
       properties: {
-
+        route: {
+          type: String,
+          observer: 'routeChanged'
+        }
       },
 
       ready: function() {
@@ -39,8 +69,10 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         this.$.dateSelector.maxSelectionLength = 3;
 
         this.$.dateSelector.timeslots = this.generateTimeslots(this.$.dateSelector.selectedDate);
+      },
 
-
+      routeChanged: function(newValue, oldValue) {
+        console.log('Route changed to ' + newValue + ' from ' + oldValue);
       },
 
       generateTimeslots: function(date) {

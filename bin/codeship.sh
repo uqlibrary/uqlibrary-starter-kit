@@ -47,7 +47,7 @@ sed -i -e "s#<AWSRegion>#${AWSRegion}#g" ${awsconfig}
 #  gulp predeploy
 #fi
 
-#gulp default
-#gulp publish
-#
-#rm -f ${awsconfig}
+gulp default
+gulp publish
+
+rm -f ${awsconfig}
