@@ -33,6 +33,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         <div sub-application="borrowing">
           <h2>Borrowing App....</h2>
           <pre>
+            <a href="/askus">go home</a>
             TODO: insert something like 'uqlibrary-borrowing-app'
           </pre>
         </div>
@@ -81,6 +82,10 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
         document.addEventListener('uqlibrary-search-input-search-submitted', function(e) {
           console.log('search-submitted ' + e.detail.searchTerm);
+        });
+
+        this.$.uqlScaffold.addEventListener('menu-selected', function(event) {
+
         });
 
       },
