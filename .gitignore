@@ -9,3 +9,5 @@ npm-debug.log
 test/bower_components/
 *.json-e
 aws.json
+wct.conf.json
+wct.conf.json-e
