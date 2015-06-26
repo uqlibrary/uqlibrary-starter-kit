@@ -248,7 +248,7 @@ gulp.task('clean:bower', function(cb) {
     'dist/bower_components/**/*',
     //leave only webcomponentsjs
     '!dist/bower_components/webcomponentsjs/**',
-    '!dist/bower_components/uqlibrary-api/mock/**'
+    '!dist/bower_components/uqlibrary-api/**'
   ], cb);
 });
 
