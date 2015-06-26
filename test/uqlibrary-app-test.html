@@ -31,27 +31,25 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
   </test-fixture>
 
   <script>
+    document.cookie="UQLMockData=enabled";
 
     suite('uqlibrary-app tests', function() {
       var app;
+      var scaffold;
 
       setup(function() {
         app = fixture('basic');
+
+        setTimeout(function(){
+          scaffold = app.querySelector('#uqlScaffold');
+          scaffold.appMenuFile = '../app/menu.json';
+        }, 1000);
       });
 
       test('App title is set', function(done) {
-
-        setTimeout(function() {
-          var appTitle = app.querySelector('.appName');
-//          var header = app.querySelector('h1');
-
-          assert.isNotNull(appTitle);
-//          assert.isNotNull(header);
-
-          done();
-
-        }, 500);
-
+        var appTitle = app.querySelector('.appName');
+        assert.isNotNull(appTitle);
+        done();
       });
 
     });
