@@ -10,8 +10,15 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
 <dom-module id="uqlibrary-app">
   <template>
-    <uqlibrary-scaffold id="uqlScaffold" app-title="UQ Library" enable-search-suggestions="true">
-      <h1>Select date and time</h1>
+
+    <uqlibrary-api-account id="apiAccount" on-uqlibrary-api-account-loaded="accountLoaded"></uqlibrary-api-account>
+
+    <uqlibrary-scaffold id="uqlScaffold"
+                        app-title="UQ Library"
+                        app-menu-file="menu.json"
+                        user="{{user}}"
+                        enable-search-suggestions="true">
+      <h1>Welcome, <span>{{user.name}}</span></h1>
 
       <iron-pages selected="[[route]]" attr-for-selected="sub-application">
 
@@ -25,9 +32,6 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
           <pre>
             TODO: insert something like 'uqlibrary-booking-app'
           </pre>
-          <p>
-            <uqlibrary-date-selector id="dateSelector"></uqlibrary-date-selector>
-          </p>
         </div>
 
         <div sub-application="borrowing">
@@ -46,6 +50,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         <div sub-application="askus"><h2>Ask Us App....</h2></div>
 
       </iron-pages>
+
     </uqlibrary-scaffold>
   </template>
 </dom-module>
@@ -57,23 +62,30 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       is: 'uqlibrary-app',
 
       properties: {
+        user: {
+          type: Object,
+          observer: 'userChanged'
+        },
         route: {
           type: String,
           observer: 'routeChanged'
         }
       },
 
+      accountLoaded: function(e){
+        if (e.detail.hasSession) {
+          this.user = e.detail;
+        }
+      },
+
+      userChanged: function() {
+        console.log('user updated');
+      },
+
       ready: function() {
         var that = this;
-        var today = new Date();
-        today = new Date(today.getFullYear(), today.getMonth(), today.getDate());
 
-        this.$.dateSelector.selectedDate = new Date(today.setHours(0));
-        this.$.dateSelector.startDate = new Date(today.setHours(0) - 5 * 24 * 60 * 60 * 1000);
-        this.$.dateSelector.endDate = new Date(today.setHours(0) + 5 * 24 * 60 * 60 * 1000);
-        this.$.dateSelector.maxSelectionLength = 3;
-
-        this.$.dateSelector.timeslots = this.generateTimeslots(this.$.dateSelector.selectedDate);
+        this.$.apiAccount.get();
 
         document.addEventListener('uqlibrary-search-input-search-value-changed', function(e) {
           that.$.uqlScaffold.fire('uqlibrary-search-input-search-suggestions-loaded', {data: [ { text: 'suggestion 1 for '+ e.detail.value, url: '#' }, { text: 'suggestion 2' }, { text: 'suggestion 3', url: 'http://google.com' }] });
@@ -85,30 +97,15 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         });
 
         this.$.uqlScaffold.addEventListener('menu-selected', function(event) {
-
+          console.log('menu-selected');
+          console.log(event.detail);
         });
-
       },
 
       routeChanged: function(newValue, oldValue) {
         console.log('Route changed to ' + newValue + ' from ' + oldValue);
-      },
-
-      generateTimeslots: function(date) {
-
-      var timeslots = [];
-
-      for (var i = 0; i < 10; i++) {
-        timeslots.push({
-          startTime: new Date(date.setHours(i)),
-          endTime: new Date(date.setHours(i + 1)),
-          selectable: (i !== 7),
-          selected: (i < 2)
-        });
       }
 
-      return timeslots;
-    }
     });
   })();
 </script>
