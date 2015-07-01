@@ -246,7 +246,7 @@ gulp.task('clean:bower', function(cb) {
   del([
     //clean up all polymer components, since all components were vulcanized
     'dist/bower_components/**/*',
-    //leave only webcomponentsjs
+    //leave only webcomponentsjs and uqlibrary-api for mock data
     '!dist/bower_components/webcomponentsjs/**',
     '!dist/bower_components/uqlibrary-api/**'
   ], cb);

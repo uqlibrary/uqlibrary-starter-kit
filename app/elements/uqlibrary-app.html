@@ -15,25 +15,26 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
     <uqlibrary-scaffold id="uqlScaffold"
                         app-title="UQ Library"
-                        app-menu-file="menu.json"
+                        app-menu-file="{{menuFile}}"
                         user="{{user}}"
                         enable-search-suggestions="true">
-      <h1>Welcome, <span>{{user.name}}</span></h1>
 
       <iron-pages selected="[[route]]" attr-for-selected="sub-application">
 
         <div sub-application="home">
+          <uqlibrary-home id="homeElement"
+                          user="{{user}}"
+                          menu-file="{{menuFile}}"></uqlibrary-home>
+        </div>
+        <div sub-application="hours">
           <uqlibrary-hours-element id="hoursElement"></uqlibrary-hours-element>
         </div>
-        <div sub-application="hours"><h2>Hours App....</h2></div>
-
         <div sub-application="booking">
           <h2>Booking App....</h2>
           <pre>
             TODO: insert something like 'uqlibrary-booking-app'
           </pre>
         </div>
-
         <div sub-application="borrowing">
           <h2>Borrowing App....</h2>
           <pre>
@@ -65,6 +66,10 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         user: {
           type: Object,
           observer: 'userChanged'
+        },
+        menuFile : {
+          type: String,
+          value: 'menu.json'
         },
         route: {
           type: String,

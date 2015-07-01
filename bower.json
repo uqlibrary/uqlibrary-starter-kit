@@ -10,6 +10,7 @@
     "uqlibrary-styles": "uqlibrary/uqlibrary-styles",
     "uqlibrary-date-selector": "uqlibrary/uqlibrary-date-selector#polymer-v1.0",
     "uqlibrary-scaffold": "uqlibrary/uqlibrary-scaffold#polymer-v1.0",
+    "uqlibrary-home": "uqlibrary/uqlibrary-home#polymer1.0",
     "uqlibrary-hours": "uqlibrary/uqlibrary-hours#polymer1.0"
   },
   "devDependencies": {
