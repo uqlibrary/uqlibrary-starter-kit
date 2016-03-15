@@ -25,7 +25,9 @@ Example:
         <!-- Header -->
         <paper-toolbar>
           <!-- Required -->
-          <paper-icon-button icon="menu" on-tap="open-uql-app-menu" paper-drawer-toggle></paper-icon-button>
+          <template is="dom-if" id="!standAlone">
+            <paper-icon-button icon="menu" on-tap="_toggleDrawerPanel"></paper-icon-button>
+          </template>
           <div id="title" class="title app-title">{{pageTitle}}</div>
         </paper-toolbar>
         <!-- Content -->
