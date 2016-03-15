@@ -1,50 +1,22 @@
-# UQLibrary Starter Kit
+# uqlibrary-starter-kit
 
-experimental application template forked from https://github.com/PolymerElements/polymer-starter-kit
+uqlibrary-starter-kit is a sample element showing how uqlibrary elements should be structured.
 
-## Getting started
+Example of full documentation can be found at [GitHub Pages](http://uqlibrary.github.io/uqlibrary-starter-kit).
 
-Please, read getting started guide for https://github.com/PolymerElements/polymer-starter-kit
-
-## Styling
-
-Coming soon...
-
-## Development
-
-Coming soon...
-
-## Testing
-
-### Local testing 
-
-Follow instructions from https://github.com/Polymer/web-component-tester
-Default testing configuration is set in wct.conf.json
-Testing of application runs with vulcanized version of elements, run gulp default command first.
-
-```shell
-# will generate dist folder with ready to deploy/vulcanized files
-gulp
-
-# run tests on local browsers
-gulp test:local
-
-# run tests on sauce
-gulp test:remote
+### Getting Started
+Install Node.JS and run the following oneliner in the project directory:
+```sh
+npm install -g bower && bower install
 ```
 
-### Deployment testing
- 
-Automated tests are triggered during deployment. Script bin/codeship_testing.sh sets up testing configuration before deployment, it updates template.wct.conf.json to include all tests for all custom components and 
- updates remote browsers list depending on which branch is being deployed.
+### Developing
+- Please adhere to the Polymer code style guide provided at [Style Guide](http://polymerelements.github.io/style-guide/). 
+- Colors and common styles are imported (bower install) from [uqlibrary-styles](http://github.com/uqlibrary/uqlibrary-styles).
+- GitHub pages should be updated after every commit to Master by running the "generate-gh-pages.sh" in the /bin/ directory
 
-
-## Deployment
-
-Each app is deployed using codeship.io. The script bin/codeship.sh is run on codeship.io to update aws configuration, then gulp tasks run to build and publish app to AWS S3.
-
-Codeship builds are triggered automatically on every push to GitHub.
-
-Each branch is monitored and deploys to a separate subdirectory with that branch name, eg /v1/staging/app, /v1/uat/app. 
-Except for production which goes directly into the /v1/ directory e.g. /v1/app.
- 
+### Testing
+Tests are run using the Web Component Tester. Either navigate to /tests/index.html in a browser or using the command line:
+```sh
+wct --local all
+```

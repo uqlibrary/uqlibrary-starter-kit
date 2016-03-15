@@ -1,13 +1,8 @@
-node_modules
-dist
-test/temp
-bower_components
+tmp
+.sass-cache
 .tmp
 .idea
 *.map
+*.rb
+bower_components/
 npm-debug.log
-test/bower_components/
-*.json-e
-aws.json
-wct.conf.json
-wct.conf.json-e

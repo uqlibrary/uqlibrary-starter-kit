@@ -1,0 +1,47 @@
+<link rel="import" href="elements.html">
+
+<!--
+`<uqlibrary-element>` is a sample element of how UQ library apps should be structured
+
+Example:
+    <uqlibrary-element></uqlibrary-element>
+
+@demo
+
+@demo demo/index.html Demo of the Full view
+-->
+<dom-module id="uqlibrary-element">
+  <!-- All element styles -->
+  <style is="custom-style" include="iron-flex iron-flex-alignment common-styles">
+    :host {
+      @apply(--uql-app-host);
+    }
+  </style>
+
+  <!-- Template -->
+  <template>
+    <div class="fit vertical layout">
+      <paper-header-panel class="flex">
+        <!-- Header -->
+        <paper-toolbar>
+          <!-- Required -->
+          <paper-icon-button icon="menu" on-tap="open-uql-app-menu"></paper-icon-button>
+          <div id="title" class="title app-title">{{pageTitle}}</div>
+        </paper-toolbar>
+        <!-- Content -->
+        <div class="uqlibrary-app-content">
+          <p>Your content goes here. For example this amazingly relaxed cat:</p>
+          <img src="http://imgstocks.com/wp-content/uploads/2013/12/Search-terms-cute-cats-cute-cat-cat-wallpaper-cat-background-cute-cat.jpg" width="100%" />
+        </div>
+      </paper-header-panel>
+      <!-- Bottom footer -->
+      <paper-toolbar class="uqlibrary-app-footer right">
+        <paper-button class="button-colored-accent">A button</paper-button>
+      </paper-toolbar>
+    </div>
+
+  </template>
+
+  <!-- Location of the script -->
+  <script src="uqlibrary-element.js"></script>
+</dom-module>
