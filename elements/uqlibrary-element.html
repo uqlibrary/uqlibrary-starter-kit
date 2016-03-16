@@ -25,7 +25,7 @@ Example:
         <!-- Header -->
         <paper-toolbar>
           <!-- Required -->
-          <template is="dom-if" id="!standAlone">
+          <template is="dom-if" if="!standAlone">
             <paper-icon-button icon="menu" on-tap="_toggleDrawerPanel"></paper-icon-button>
           </template>
           <div id="title" class="title app-title">{{pageTitle}}</div>
