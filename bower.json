@@ -8,6 +8,7 @@
   ],
   "private": true,
   "main": "elements/uqlibrary-element.html",
+  "ignore": [],
   "dependencies": {
     "iron-elements": "PolymerElements/iron-elements#^1.0.8",
     "paper-elements": "PolymerElements/paper-elements#^1.0.7",
