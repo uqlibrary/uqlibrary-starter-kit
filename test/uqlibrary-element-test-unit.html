@@ -1,38 +1,38 @@
 <!doctype html>
 <html>
 <head>
-    <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
-    <title>uqlibrary-element</title>
+  <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+  <title>uqlibrary-element</title>
 
-    <script src="../bower_components/webcomponentsjs/webcomponents.min.js"></script>
-    <script src="../bower_components/web-component-tester/browser.js"></script>
-    <script src="../bower_components/test-fixture/test-fixture-mocha.js"></script>
-    <link rel="import" href="../bower_components/test-fixture/test-fixture.html">
+  <script src="../bower_components/webcomponentsjs/webcomponents.min.js"></script>
+  <script src="../bower_components/web-component-tester/browser.js"></script>
+  <script src="../bower_components/test-fixture/test-fixture-mocha.js"></script>
+  <link rel="import" href="../bower_components/test-fixture/test-fixture.html">
 
-    <!-- Import the element to test -->
-    <link rel="import" href="../elements/uqlibrary-element.html">
+  <!-- Import the element to test -->
+  <link rel="import" href="../elements/uqlibrary-element.html">
 
 </head>
 <body>
 
 <test-fixture id="element">
-    <template>
-        <uqlibrary-element page-title="uqlibrary-element Title"></uqlibrary-element>
-    </template>
+  <template>
+    <uqlibrary-element page-title="uqlibrary-element Title"></uqlibrary-element>
+  </template>
 </test-fixture>
 
 <script>
-    suite('<uqlibrary-element> tests', function () {
-        var element;
+  suite('<uqlibrary-element> tests', function () {
+    var element;
 
-        setup(function () {
-            element = fixture('element');
-        });
-
-        test('It should properly display the title', function () {
-            expect(element.$.title.textContent).to.be.equal('uqlibrary-element Title');
-        });
+    setup(function () {
+      element = fixture('element');
     });
+
+    test('It should properly display the title', function () {
+      expect(element.$$('.uqlibrary-app-title').textContent).to.be.equal('uqlibrary-element Title');
+    });
+  });
 </script>
 
 </body>
